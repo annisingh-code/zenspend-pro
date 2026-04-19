@@ -67,7 +67,7 @@ export default function TransactionForm({ onAdd }) {
             <label>Amount ($)</label>
             <input 
               type="number" 
-              placeholder="0.00" 
+              placeholder="Enter amount" 
               step="0.01"
               min="0.01"
               value={amount} 

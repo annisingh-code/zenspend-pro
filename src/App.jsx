@@ -50,9 +50,12 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <div className="logo">
-          <Wallet className="logo-icon" size={32} />
-          <h1>ZenSpend Pro</h1>
+        <div className="logo-container">
+          <div className="logo">
+            <Wallet className="logo-icon" size={32} />
+            <h1>ZenSpend Pro</h1>
+          </div>
+          <p className="app-subtitle">Track. Plan. Grow your finances.</p>
         </div>
       </header>
 
@@ -92,6 +95,11 @@ function App() {
           padding-bottom: 1rem;
           border-bottom: 1px solid var(--border-color);
         }
+        .logo-container {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
         .logo {
           display: flex;
           align-items: center;
@@ -103,6 +111,12 @@ function App() {
         .logo h1 {
           font-size: 1.75rem;
           letter-spacing: -0.5px;
+          margin: 0;
+        }
+        .app-subtitle {
+          color: var(--text-muted);
+          font-size: 0.875rem;
+          margin-left: 3rem;
         }
         .dashboard-grid {
           display: flex;
