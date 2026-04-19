@@ -5,12 +5,14 @@ import { format } from 'date-fns';
 export default function TransactionList({ transactions, onDelete }) {
   const [filter, setFilter] = useState('All');
 
-  // Extract unique categories for the filter
-  const categories = ['All', ...new Set(transactions.map(t => t.category))];
+  const categories = [...new Set(transactions.map(t => t.category))];
+  const filterOptions = ['All', 'Income', 'Expense', ...categories];
 
   const filteredTransactions = filter === 'All' 
     ? transactions 
-    : transactions.filter(t => t.category === filter);
+    : (filter === 'Income' || filter === 'Expense')
+      ? transactions.filter(t => t.type === filter.toLowerCase())
+      : transactions.filter(t => t.category === filter);
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
@@ -27,8 +29,8 @@ export default function TransactionList({ transactions, onDelete }) {
             value={filter} 
             onChange={(e) => setFilter(e.target.value)}
           >
-            {categories.map(cat => (
-              <option key={cat} value={cat}>{cat}</option>
+            {filterOptions.map(option => (
+              <option key={option} value={option}>{option}</option>
             ))}
           </select>
         </div>
@@ -95,9 +97,16 @@ export default function TransactionList({ transactions, onDelete }) {
           background: transparent;
           padding: 0;
           font-size: 0.875rem;
+          color: var(--text-main);
+          cursor: pointer;
+        }
+        .category-filter option {
+          background-color: var(--surface-color);
+          color: var(--text-main);
         }
         .category-filter:focus {
           box-shadow: none;
+          outline: none;
         }
         .transactions {
           display: flex;
