@@ -145,6 +145,7 @@ export default function TransactionList({ transactions, onDelete }) {
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-shrink: 0;
         }
         .icon-circle.bg-green {
           background-color: var(--accent-green-alpha);
@@ -161,8 +162,6 @@ export default function TransactionList({ transactions, onDelete }) {
         .tx-details h4 {
           font-size: 1rem;
           margin-bottom: 0.25rem;
-          overflow-wrap: break-word;
-          word-break: keep-all;
           line-height: 1.3;
           display: -webkit-box;
           -webkit-line-clamp: 2;
@@ -172,13 +171,12 @@ export default function TransactionList({ transactions, onDelete }) {
         .tx-meta {
           font-size: 0.75rem;
           color: var(--text-muted);
-          overflow-wrap: break-word;
-          word-break: keep-all;
         }
         .tx-actions {
           display: flex;
           align-items: center;
           gap: 1rem;
+          flex-shrink: 0;
         }
         .tx-amount {
           font-weight: 600;

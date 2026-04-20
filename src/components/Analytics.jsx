@@ -126,6 +126,8 @@ export default function Analytics({ transactions }) {
           flex-direction: column;
           gap: 1rem;
           min-width: 0;
+          width: 100%;
+          overflow: hidden;
         }
         .chart-wrapper h4 {
           font-size: 1rem;
@@ -135,6 +137,8 @@ export default function Analytics({ transactions }) {
         }
         .chart {
           width: 100%;
+          max-width: 100%;
+          min-width: 0;
           height: 280px;
           padding-bottom: 1.5rem;
         }
