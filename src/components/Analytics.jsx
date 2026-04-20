@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { format, parseISO } from 'date-fns';
@@ -19,7 +20,6 @@ export default function Analytics({ transactions }) {
   const COLORS = ['#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#ef4444'];
 
   // Process data for Bar Chart (Monthly Trends)
-  // Group by month
   const monthlyDataMap = transactions.reduce((acc, t) => {
     const month = format(parseISO(t.date), 'MMM yy');
     if (!acc[month]) {
@@ -33,9 +33,6 @@ export default function Analytics({ transactions }) {
     return acc;
   }, {});
 
-  // Since we have dummy data only for April 2026, let's just make it look like a trend
-  // If only one month is present, we just show it. 
-  // In a real app we would ensure chronological order and fill missing months.
   const barData = Object.values(monthlyDataMap);
 
   const CustomTooltip = ({ active, payload, label }) => {
@@ -56,21 +53,21 @@ export default function Analytics({ transactions }) {
 
   return (
     <div className="card analytics">
-      <h3>Financial Overview</h3>
+      <h3 className="analytics-title">Financial Overview</h3>
       
       <div className="charts-container">
         {pieData.length > 0 ? (
           <div className="chart-wrapper">
             <h4>Expenses by Category</h4>
             <div className="chart">
-              <ResponsiveContainer width="100%" height={250}>
+              <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={pieData}
                     cx="50%"
                     cy="50%"
-                    innerRadius={60}
-                    outerRadius={80}
+                    innerRadius="50%" /* Using percentages prevents clipping on small heights */
+                    outerRadius="75%"
                     paddingAngle={5}
                     dataKey="value"
                   >
@@ -79,7 +76,7 @@ export default function Analytics({ transactions }) {
                     ))}
                   </Pie>
                   <Tooltip content={<CustomTooltip />} />
-                  <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />
+                  <Legend verticalAlign="bottom" height={24} iconType="circle" wrapperStyle={{ fontSize: '12px' }} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -93,12 +90,12 @@ export default function Analytics({ transactions }) {
         <div className="chart-wrapper">
           <h4>Income vs Expenses</h4>
           <div className="chart">
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={barData} margin={{ top: 10, right: 20, left: 10, bottom: 10 }}>
-                <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} dy={10} />
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={barData} margin={{ top: 5, right: 20, left: 0, bottom: 0 }}>
+                <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} dy={5} />
                 <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `$${value}`} dx={-10} width={60} />
                 <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255, 255, 255, 0.05)' }} />
-                <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />
+                <Legend verticalAlign="bottom" height={24} iconType="circle" wrapperStyle={{ fontSize: '12px' }} />
                 <Bar dataKey="Income" fill="#10b981" radius={[4, 4, 0, 0]} barSize={30} />
                 <Bar dataKey="Expense" fill="#ef4444" radius={[4, 4, 0, 0]} barSize={30} />
               </BarChart>
@@ -113,8 +110,9 @@ export default function Analytics({ transactions }) {
           flex-direction: column;
           gap: 1.5rem;
         }
-        .analytics h3 {
+        .analytics-title {
           font-size: 1.25rem;
+          margin: 0;
         }
         .charts-container {
           display: flex;
@@ -127,20 +125,19 @@ export default function Analytics({ transactions }) {
           gap: 1rem;
           min-width: 0;
           width: 100%;
-          overflow: hidden;
         }
         .chart-wrapper h4 {
           font-size: 1rem;
           color: var(--text-muted);
           font-weight: 500;
           text-align: center;
+          margin: 0;
         }
         .chart {
           width: 100%;
           max-width: 100%;
           min-width: 0;
           height: 280px;
-          padding-bottom: 1.5rem;
         }
         .chart-tooltip {
           background-color: var(--surface-color);
@@ -148,6 +145,7 @@ export default function Analytics({ transactions }) {
           padding: 0.75rem;
           border-radius: var(--border-radius-sm);
           box-shadow: var(--shadow-md);
+          pointer-events: none; 
         }
         .tooltip-label {
           font-weight: 600;
@@ -168,12 +166,34 @@ export default function Analytics({ transactions }) {
           border-radius: var(--border-radius-md);
           border: 1px dashed var(--border-color);
         }
+        
         @media (max-width: 600px) {
+          .analytics {
+            gap: 1rem;
+          }
+          .analytics-title {
+            font-size: 1.1rem;
+          }
           .charts-container {
-            gap: 1.5rem;
+            gap: 1.5rem; /* Much tighter gap between charts */
+          }
+          .chart-wrapper {
+            gap: 0.5rem; /* Tighter gap between chart title and chart */
+          }
+          .chart-wrapper h4 {
+            font-size: 0.95rem;
           }
           .chart {
-            height: 280px;
+            height: 190px; /* Severely reduced height to force everything onto one screen */
+          }
+          .chart-tooltip {
+            padding: 0.5rem; 
+          }
+          .tooltip-label {
+            font-size: 0.85rem;
+          }
+          .tooltip-item {
+            font-size: 0.75rem;
           }
         }
       `}</style>

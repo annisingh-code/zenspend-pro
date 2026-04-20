@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SummaryCards from './components/SummaryCards';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
@@ -70,7 +70,8 @@ function App() {
           />
         </div>
 
-        <div className="main-content flex gap-6">
+        {/* Removed the conflicting flex and gap utility classes here */}
+        <div className="main-content">
           <div className="left-column">
             <TransactionForm onAdd={addTransaction} />
             <TransactionList transactions={transactions} onDelete={deleteTransaction} />
@@ -90,6 +91,8 @@ function App() {
           max-width: 1400px;
           margin: 0 auto;
           width: 100%;
+          box-sizing: border-box;
+          overflow-x: hidden;
         }
         .app-header {
           margin-bottom: 2rem;
@@ -145,7 +148,8 @@ function App() {
         }
         @media (max-width: 600px) {
           .app-container {
-            padding: 1rem;
+            /* Adjusted mobile padding for better edge spacing on devices like the S21 */
+            padding: 1rem 0.75rem; 
           }
           .dashboard-grid {
             gap: 1.5rem;

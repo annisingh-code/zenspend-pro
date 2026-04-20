@@ -79,16 +79,18 @@ export default function TransactionList({ transactions, onDelete }) {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          gap: 1rem;
         }
         .list-header h3 {
           font-size: 1.25rem;
+          margin: 0;
         }
         .filter-wrapper {
           display: flex;
           align-items: center;
           gap: 0.5rem;
           background-color: var(--bg-color);
-          padding: 0.25rem 0.5rem;
+          padding: 0.4rem 0.75rem;
           border-radius: var(--border-radius-sm);
           border: 1px solid var(--border-color);
         }
@@ -171,6 +173,7 @@ export default function TransactionList({ transactions, onDelete }) {
         .tx-meta {
           font-size: 0.75rem;
           color: var(--text-muted);
+          margin: 0;
         }
         .tx-actions {
           display: flex;
@@ -198,6 +201,42 @@ export default function TransactionList({ transactions, onDelete }) {
           text-align: center;
           color: var(--text-muted);
           padding: 2rem 0;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 600px) {
+          .list-header {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .filter-wrapper {
+            width: 100%;
+            justify-content: space-between;
+          }
+          .transaction-item {
+            padding: 0.75rem;
+            gap: 0.75rem;
+          }
+          .icon-circle {
+            width: 32px;
+            height: 32px;
+          }
+          .tx-details h4 {
+            font-size: 0.95rem;
+          }
+          .tx-meta {
+            font-size: 0.7rem;
+          }
+          .tx-actions {
+            gap: 0.5rem;
+          }
+          .tx-amount {
+            font-size: 0.95rem;
+          }
+          .delete-btn {
+            opacity: 1; /* Touch devices don't have hover, so make it always visible */
+            padding: 0.25rem;
+          }
         }
       `}</style>
     </div>

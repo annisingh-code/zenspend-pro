@@ -76,6 +76,8 @@ input, select, textarea {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 100%;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -157,8 +159,17 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+
   .card {
     padding: 1.25rem;
-    overflow: hidden; /* Prevent internal content from forcing width */
+    overflow: hidden; 
+  }
+
+  .flex-mobile-col {
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 }
