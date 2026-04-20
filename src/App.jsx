@@ -139,6 +139,26 @@ function App() {
             grid-template-columns: 1fr;
           }
         }
+        @media (max-width: 600px) {
+          .app-container {
+            padding: 1rem;
+          }
+          .dashboard-grid {
+            gap: 1.25rem;
+          }
+          .main-content {
+            gap: 1.25rem;
+          }
+          .left-column, .right-column {
+            gap: 1.25rem;
+          }
+          .logo h1 {
+            font-size: 1.5rem;
+          }
+          .app-subtitle {
+            margin-left: 2.5rem;
+          }
+        }
       `}</style>
     </div>
   );

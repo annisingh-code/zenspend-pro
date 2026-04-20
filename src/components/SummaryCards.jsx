@@ -135,6 +135,15 @@ export default function SummaryCards({ balance, income, expenses, budget, update
           color: var(--text-muted);
           font-weight: 600;
         }
+        @media (max-width: 600px) {
+          .summary-cards {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+          .amount {
+            font-size: 1.5rem;
+          }
+        }
       `}</style>
     </div>
   );

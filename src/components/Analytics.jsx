@@ -162,6 +162,14 @@ export default function Analytics({ transactions }) {
           border-radius: var(--border-radius-md);
           border: 1px dashed var(--border-color);
         }
+        @media (max-width: 600px) {
+          .charts-container {
+            gap: 1.5rem;
+          }
+          .chart {
+            height: 220px;
+          }
+        }
       `}</style>
     </div>
   );

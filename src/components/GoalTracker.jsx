@@ -162,6 +162,14 @@ export default function GoalTracker({ goals, onAddGoal }) {
           min-width: 32px;
           text-align: right;
         }
+        @media (max-width: 600px) {
+          .add-goal-form {
+            flex-direction: column;
+          }
+          .add-goal-form input, .add-goal-form button {
+            width: 100%;
+          }
+        }
       `}</style>
     </div>
   );
