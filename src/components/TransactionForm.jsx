@@ -116,11 +116,11 @@ export default function TransactionForm({ onAdd }) {
         .form-content {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 1.25rem;
         }
         .form-row {
           display: flex;
-          gap: 1rem;
+          gap: 1.25rem;
         }
         .form-group {
           display: flex;
@@ -131,6 +131,9 @@ export default function TransactionForm({ onAdd }) {
           font-size: 0.875rem;
           color: var(--text-muted);
           font-weight: 500;
+        }
+        .form-group input, .form-group select {
+          width: 100%;
         }
         .flex-1 { flex: 1; }
         .flex-2 { flex: 2; }
@@ -159,7 +162,7 @@ export default function TransactionForm({ onAdd }) {
           color: var(--accent-red);
         }
         .submit-btn {
-          margin-top: 0.5rem;
+          margin-top: 1rem;
           width: 100%;
         }
         @media (max-width: 600px) {

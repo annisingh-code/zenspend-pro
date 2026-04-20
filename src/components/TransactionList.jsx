@@ -161,13 +161,19 @@ export default function TransactionList({ transactions, onDelete }) {
         .tx-details h4 {
           font-size: 1rem;
           margin-bottom: 0.25rem;
-          word-break: break-word;
+          overflow-wrap: break-word;
+          word-break: keep-all;
           line-height: 1.3;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
         .tx-meta {
           font-size: 0.75rem;
           color: var(--text-muted);
-          word-break: break-word;
+          overflow-wrap: break-word;
+          word-break: keep-all;
         }
         .tx-actions {
           display: flex;

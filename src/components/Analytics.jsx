@@ -135,7 +135,8 @@ export default function Analytics({ transactions }) {
         }
         .chart {
           width: 100%;
-          height: 250px;
+          height: 280px;
+          padding-bottom: 1.5rem;
         }
         .chart-tooltip {
           background-color: var(--surface-color);
@@ -168,7 +169,7 @@ export default function Analytics({ transactions }) {
             gap: 1.5rem;
           }
           .chart {
-            height: 220px;
+            height: 280px;
           }
         }
       `}</style>
