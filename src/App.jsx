@@ -148,13 +148,13 @@ function App() {
             padding: 1rem;
           }
           .dashboard-grid {
-            gap: 1.25rem;
+            gap: 1.5rem;
           }
           .main-content {
-            gap: 1.25rem;
+            gap: 1.5rem;
           }
           .left-column, .right-column {
-            gap: 1.25rem;
+            gap: 1.5rem;
           }
           .logo h1 {
             font-size: 1.5rem;
