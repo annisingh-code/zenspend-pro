@@ -156,14 +156,21 @@ export default function TransactionList({ transactions, onDelete }) {
         }
         .tx-details {
           flex: 1;
+          min-width: 0;
         }
         .tx-details h4 {
           font-size: 1rem;
           margin-bottom: 0.25rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .tx-meta {
           font-size: 0.75rem;
           color: var(--text-muted);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .tx-actions {
           display: flex;

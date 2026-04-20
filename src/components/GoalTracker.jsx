@@ -124,10 +124,15 @@ export default function GoalTracker({ goals, onAddGoal }) {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          gap: 1rem;
         }
         .goal-info h4 {
           font-size: 1rem;
           font-weight: 500;
+          min-width: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .goal-amounts {
           font-size: 0.875rem;

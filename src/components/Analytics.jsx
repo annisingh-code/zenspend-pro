@@ -125,6 +125,7 @@ export default function Analytics({ transactions }) {
           display: flex;
           flex-direction: column;
           gap: 1rem;
+          min-width: 0;
         }
         .chart-wrapper h4 {
           font-size: 1rem;

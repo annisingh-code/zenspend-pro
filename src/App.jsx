@@ -89,6 +89,7 @@ function App() {
           padding: 2rem;
           max-width: 1400px;
           margin: 0 auto;
+          width: 100%;
         }
         .app-header {
           margin-bottom: 2rem;
@@ -122,17 +123,20 @@ function App() {
           display: flex;
           flex-direction: column;
           gap: 2rem;
+          min-width: 0;
         }
         .main-content {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 2rem;
           align-items: start;
+          min-width: 0;
         }
         .left-column, .right-column {
           display: flex;
           flex-direction: column;
           gap: 2rem;
+          min-width: 0;
         }
         @media (max-width: 992px) {
           .main-content {
